@@ -1,0 +1,7 @@
+{
+  "name": "cifrado-cayd",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
