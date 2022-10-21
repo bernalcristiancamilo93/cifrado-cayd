@@ -7,8 +7,21 @@ const routes: Routes = [
     loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
   },
   {
+    path: 'cesar',
+    loadChildren: () => import('./ciphers/cesar/cesar.module').then( m => m.CesarPageModule)
+  },
+  {
+    path: 'about',
+    loadChildren: () => import('./about/about.module').then( m => m.AboutPageModule)
+  },
+  {
     path: '',
-    redirectTo: 'home',
+    redirectTo: 'cesar',
+    pathMatch: 'full'
+  },
+  {
+    path: '**',
+    redirectTo: 'cesar',
     pathMatch: 'full'
   },
 ];

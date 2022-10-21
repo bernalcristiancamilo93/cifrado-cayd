@@ -1,0 +1,154 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button color="primary"></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      Cesar's Cipher by Camilo Bernal &#169;
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-card>
+          <ion-grid class="ion-padding">
+            <form [formGroup]="cesarForm">
+              <ion-row>
+                <ion-col>
+                  <ion-card-header>
+                    <ion-card-title> Cesar's Cipher </ion-card-title>
+                    <ion-card-subtitle>
+                      <p>This is a web app made to encrypt a message using Cesar's Cipher.
+                        Choose your secret keys and write the message you want to conceal.
+                        Once everything is ready, click on the <i>Calculate</i> button to be amazed.</p>
+                      <p>Keep in mind <strong>b</strong> must be lower or equal than {{ conditionNum }}
+                        and <strong>a</strong> must be prime quotient of this same number.
+                        The number of letter blocks is set to two by default but you can change it
+                        whenever you feel like it.</p>
+                    </ion-card-subtitle>
+                  </ion-card-header>
+                </ion-col>
+              </ion-row>
+              <ion-row>
+                <ion-col offset="1" size="2">
+                  <ion-item>
+                    <ion-label position="floating"> A Key </ion-label>
+                    <ion-textarea
+                      formControlName="aKey"
+                      placeholder="Type your key"
+                      autoGrow="true"
+                      rows="1"
+                      (ionBlur)="checkAKey()"
+                    >
+                    </ion-textarea>
+                  </ion-item>
+                </ion-col>
+                <ion-col size="2">
+                  <ion-item>
+                    <ion-label position="floating"> B Key </ion-label>
+                    <ion-textarea
+                      formControlName="bKey"
+                      placeholder="Type your key"
+                      autoGrow="true"
+                      rows="1"
+                      (ionBlur)="checkBKey()"
+                    >
+                    </ion-textarea>
+                  </ion-item>
+                </ion-col>
+                <ion-col offset="3" size="3">
+                  <ion-item>
+                    <ion-label position="floating"> N° of Letter Blocks </ion-label>
+                    <ion-input
+                      formControlName="numBlocks"
+                      type="number"
+                      placeholder="Enter a number"
+                      (ionChange)="checkNumBlocks()"
+                    >
+                    </ion-input>
+                  </ion-item>
+                </ion-col>
+              </ion-row>
+              <ion-row>
+                <ion-col offset="1" size="4">
+                  <ion-item>
+                    <ion-label position="floating"> Plain Text Message M </ion-label>
+                    <ion-textarea
+                      formControlName="textMessage"
+                      placeholder="Type your message here"
+                      autoGrow="true"
+                      rows="1"
+                    >
+                    </ion-textarea>
+                  </ion-item>
+                </ion-col>
+                <ion-col offset="3" size="3">
+                  <ion-item>
+                    <ion-label position="floating"> Alphabet </ion-label>
+                    <ion-textarea
+                      formControlName="alphabet"
+                      autoGrow="true"
+                      rows="1"
+                      [readonly]="false"
+                      (ionChange)="updateData()"
+                    >
+                    </ion-textarea>
+                  </ion-item>
+                </ion-col>
+              </ion-row>
+              <ion-row>
+                <ion-col offset="1" size="2">
+                  <ion-button
+                    [disabled]="!cesarForm.valid"
+                    (click)="calculate()"
+                  >
+                    Calculate
+                  </ion-button>
+                </ion-col>
+                <ion-col size="2">
+                  <ion-button
+                    fill="outline"
+                    (click)="useDummyMsg()"
+                  >
+                    Use dummy message
+                  </ion-button>
+                </ion-col>
+              </ion-row>
+              <ion-row>
+                <ion-col offset="1" size="4">
+                  <ion-item>
+                    <ion-label position="floating"> Formated Message </ion-label>
+                    <ion-textarea
+                      formControlName="formatedMessage"
+                      [readonly]="true"
+                      autoGrow="true"
+                      rows="1"
+                    >
+                    </ion-textarea>
+                  </ion-item>
+                </ion-col>
+              </ion-row>
+              <ion-row>
+                <ion-col offset="1" size="4">
+                  <ion-item>
+                    <ion-label position="floating"> Encrypted Message </ion-label>
+                    <ion-textarea
+                      formControlName="encryptedMessage"
+                      [readonly]="true"
+                      autoGrow="true"
+                      rows="1"
+                    >
+                    </ion-textarea>
+                  </ion-item>
+                </ion-col>
+              </ion-row>
+            </form>
+          </ion-grid>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
