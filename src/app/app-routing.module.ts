@@ -16,12 +16,12 @@ const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: 'cesar',
+    redirectTo: 'home',
     pathMatch: 'full'
   },
   {
     path: '**',
-    redirectTo: 'cesar',
+    redirectTo: 'home',
     pathMatch: 'full'
   },
 ];
